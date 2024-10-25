@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: sn4j-users-ms
+  cloud:
+    config:
+      enabled: false
+server:
+  port: 9094
