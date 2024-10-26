@@ -1,5 +1,8 @@
 package com.hamzaouggadi.sn4jusersms.models.web;
 
+import com.hamzaouggadi.sn4jusersms.enums.AppUserRole;
+import com.hamzaouggadi.sn4jusersms.models.entities.AppUserEntity;
+
 import java.time.LocalDateTime;
 
 public class AppUserWeb {
@@ -11,6 +14,26 @@ public class AppUserWeb {
     private String password;
 
     private LocalDateTime createdAt;
+
+    /**
+     * Maps an AppUserWeb to an AppUserEntity using the current instance fields
+     * Used to persist a new user or update an existing one
+     * @param role Role can be passed as to set which type of user
+     * @return AppUserEntity
+     */
+
+    public AppUserEntity toEntity(AppUserRole role) {
+        AppUserEntity appUserEntity = new AppUserEntity();
+
+        appUserEntity.setEmail(this.email);
+        appUserEntity.setUsername(this.username);
+        appUserEntity.setPassword(this.password);
+        appUserEntity.setCreatedAt(this.createdAt);
+        appUserEntity.setBanned(false);
+        appUserEntity.setRole(role);
+
+        return appUserEntity;
+    }
 
     public AppUserWeb() {
 
